@@ -1,13 +1,23 @@
-public class SalesTax {
+public class Item {
 
     private String itemName;
+    private final double price;
+    private final boolean imported;
+    private final boolean exempted;
 
-    public SalesTax(String itemName) {
+    public Item(String itemName, double price, boolean imported, boolean exempted) {
 
         this.itemName = itemName;
+        this.price = price;
+        this.imported = imported;
+        this.exempted = exempted;
     }
 
-    public double calculateTax(double price, boolean imported, boolean exempted) {
+    public double billMe() {
+        return price + calculateSalesTax();
+    }
+
+    public double calculateSalesTax() {
 
         double taxCalculated = 0d;
 
