@@ -94,8 +94,8 @@ public class ItemTest {
     }
 
     @Test
-    public void calculateSalesTaxForTwoItems() {
-        Item itemBook = new Item("Book", 10.00, false, true);
+    public void calculateSalesTaxForThreeItems() {
+        Item itemBook = new Item("Book", 12.49, false, true);
         double salesTax_book = itemBook.calculateSalesTax();
 
         Item itemMusic = new Item("Music", 14.99, false, false);
@@ -109,7 +109,23 @@ public class ItemTest {
         assertEquals(1.50, totalSalesTax, 0.001);
 
     }
-    
+
+    @Test
+    public void calculateTotalBillForThreeItems() {
+
+        Item itemBook = new Item("Book", 12.49, false, true);
+        double totalBill_book = itemBook.billMe();
+
+        Item itemMusic = new Item("Music", 14.99, false, false);
+        double totalBill_music = itemMusic.billMe();
+
+        Item itemChaco = new Item("Chaco", 0.85, false, true);
+        double totalBill_chaco = itemChaco.billMe();
+
+        double billAllItemsWithTax = totalBill_book + totalBill_music + totalBill_chaco;
+
+        assertEquals(29.83, billAllItemsWithTax, 0.001);
+    }
 
 }
 
