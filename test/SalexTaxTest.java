@@ -39,5 +39,18 @@ public class SalexTaxTest {
         assertEquals(15d, salestax, 0.001);
     }
 
+    @Test
+    public void calculateSalexTaxForBookImportedNotExempted() {
+        SalesTax salesTax = new SalesTax("Book");
+        boolean imported = true;
+        boolean exempted = false;
+        double salestax = salesTax.calculateTax(47.50, imported, exempted);
+        assertEquals(7.15, salestax, 0.001);
+    }
+
+    
+
+
 
 }
+

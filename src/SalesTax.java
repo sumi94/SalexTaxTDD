@@ -16,6 +16,8 @@ public class SalesTax {
         }
         taxCalculated = taxCalculated + price * 10.0 / 100.0;
 
+        taxCalculated = Math.round(taxCalculated * 20.0) / 20.0;
+
         return taxCalculated;
     }
 }
