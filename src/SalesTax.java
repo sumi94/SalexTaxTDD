@@ -8,6 +8,14 @@ public class SalesTax {
     }
 
     public double calculateTax(double price, boolean imported, boolean exempted) {
-        return 1d;
+
+        double taxCalculated = 0d;
+
+        if(imported == true){
+            taxCalculated = taxCalculated + (price * 5.0 / 100.0);
+        }
+        taxCalculated = taxCalculated + price * 10.0 / 100.0;
+
+        return taxCalculated;
     }
 }
