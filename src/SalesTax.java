@@ -14,7 +14,10 @@ public class SalesTax {
         if(imported == true){
             taxCalculated = taxCalculated + (price * 5.0 / 100.0);
         }
-        taxCalculated = taxCalculated + price * 10.0 / 100.0;
+
+        if(exempted == false){
+            taxCalculated = taxCalculated + price * 10.0 / 100.0;
+        }
 
         taxCalculated = Math.round(taxCalculated * 20.0) / 20.0;
 

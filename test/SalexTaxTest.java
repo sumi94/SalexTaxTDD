@@ -44,11 +44,37 @@ public class SalexTaxTest {
         SalesTax salesTax = new SalesTax("Book");
         boolean imported = true;
         boolean exempted = false;
-        double salestax = salesTax.calculateTax(47.50, imported, exempted);
-        assertEquals(7.15, salestax, 0.001);
+        double salestax = salesTax.calculateTax(27.99, imported, exempted);
+        assertEquals(4.2, salestax, 0.001);
     }
 
-    
+    @Test
+    public void calculateSalexTaxForBookImportedExempted() {
+        SalesTax salesTax = new SalesTax("Book");
+        boolean imported = true;
+        boolean exempted = true;
+        double salestax = salesTax.calculateTax(100d, imported, exempted);
+        assertEquals(5d, salestax, 0.001);
+    }
+
+    @Test
+    public void calculateSalesTaxForBookNotImportedExempted() {
+        SalesTax salesTax = new SalesTax("Book");
+        boolean imported = false;
+        boolean exempted = true;
+        double salestax = salesTax.calculateTax(0.85, imported, exempted);
+        assertEquals(0d, salestax, 0.001);
+    }
+
+    @Test
+    public void calculateSalesTaxForBookRandomCase() {
+        SalesTax salesTax = new SalesTax("Book");
+        boolean imported = false;
+        boolean exempted = false;
+        double salestax = salesTax.calculateTax(18.99, imported, exempted);
+        assertEquals(1.9, salestax, 0.001);
+    }
+
 
 
 
