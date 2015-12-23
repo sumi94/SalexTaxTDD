@@ -127,5 +127,38 @@ public class ItemTest {
         assertEquals(29.83, billAllItemsWithTax, 0.001);
     }
 
+
+
+    @Test
+    public void calculateSalesTaxForThreeItemsInput2() {
+        Item itemBook = new Item("Choco", 10.00, true, true);
+        double totalBill_chaco = itemBook.calculateSalesTax();
+
+        Item itemMusic = new Item("Perfume", 47.50, true, false);
+        double totalBill_perfume = itemMusic.calculateSalesTax();
+
+        double totalSalesTax = totalBill_chaco + totalBill_perfume;
+
+        assertEquals(7.65, totalSalesTax, 0.001);
+
+    }
+
+    @Test
+    public void calculateTotalBillForTwoItemsInput2() {
+
+        Item itemBook = new Item("Choco", 10.00, true, true);
+        double totalBill_chaco = itemBook.billMe();
+
+        Item itemMusic = new Item("Perfume", 47.50, true, false);
+        double totalBill_perfume = itemMusic.billMe();
+
+        double billAllItemsWithTax = totalBill_chaco + totalBill_perfume;
+
+        assertEquals(65.15, billAllItemsWithTax, 0.001);
+    }
+
+    
+
+
 }
 
