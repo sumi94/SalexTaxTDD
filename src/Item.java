@@ -14,7 +14,11 @@ public class Item {
     }
 
     public double billMe() {
-        return price + calculateSalesTax();
+
+        double tax = calculateSalesTax();
+
+        tax = Math.round(tax * 20.0) / 20.0;
+        return price + tax;
     }
 
     public double calculateSalesTax() {
@@ -29,7 +33,9 @@ public class Item {
             taxCalculated = taxCalculated + price * 10.0 / 100.0;
         }
 
-        taxCalculated = Math.round(taxCalculated * 20.0) / 20.0;
+         taxCalculated = Math.round(taxCalculated * 100.0) / 100.0;
+
+        // taxCalculated = Math.round(taxCalculated * 20.0) / 20.0;
 
         return taxCalculated;
     }

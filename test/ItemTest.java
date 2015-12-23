@@ -80,6 +80,7 @@ public class ItemTest {
         boolean exempted = false;
         Item item = new Item("Book", 18.99, imported, exempted);
         double priceWithBill = item.billMe();
+
         assertEquals(20.89, priceWithBill, 0.001);
     }
 
@@ -89,6 +90,9 @@ public class ItemTest {
         boolean exempted = false;
         Item item = new Item("Book", 18.99, imported, exempted);
         double salesTax = item.calculateSalesTax();
+
+        salesTax = Math.round(salesTax * 20.0) / 20.0;
+
         assertEquals(1.9, salesTax, 0.001);
 
     }
@@ -105,6 +109,8 @@ public class ItemTest {
         double salesTax_chaco = itemChaco.calculateSalesTax();
 
         double totalSalesTax = salesTax_book + salesTax_chaco + salesTax_music;
+
+        totalSalesTax = Math.round(totalSalesTax * 20.0) / 20.0;
 
         assertEquals(1.50, totalSalesTax, 0.001);
 
@@ -139,6 +145,8 @@ public class ItemTest {
 
         double totalSalesTax = totalBill_chaco + totalBill_perfume;
 
+        totalSalesTax = Math.round(totalSalesTax * 20.0) / 20.0;
+
         assertEquals(7.65, totalSalesTax, 0.001);
 
     }
@@ -157,7 +165,29 @@ public class ItemTest {
         assertEquals(65.15, billAllItemsWithTax, 0.001);
     }
 
-    
+
+    @Test
+    public void calculateTotalBillForFourItemsInput3() {
+
+        Item itemPerfume = new Item("Perfume", 27.99, true, false);
+        double totalBill_perfume = itemPerfume.calculateSalesTax();
+
+        Item itemBottle = new Item("PerfumeNoImport", 18.99, false, false);
+        double totalBill_bottle = itemBottle.calculateSalesTax();
+
+        Item itemTab = new Item("Headache", 9.75, false, true);
+        double totalBill_tab = itemTab.calculateSalesTax();
+
+        Item itemChaco = new Item("Chaco", 11.25, true, true);
+        double totalBill_chaco = itemChaco.calculateSalesTax();
+
+        double billAllItemsWithTax = totalBill_perfume + totalBill_bottle + totalBill_tab + totalBill_chaco;
+
+        billAllItemsWithTax = Math.round(billAllItemsWithTax * 20.0) / 20.0;
+
+        assertEquals(6.65, billAllItemsWithTax, 0.001);
+
+    }
 
 
 }
