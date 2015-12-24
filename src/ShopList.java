@@ -22,4 +22,16 @@ public class ShopList {
 
         return totalPrice;
     }
+
+    public double calculateTotalTax() {
+
+        double totalTax = 0d;
+
+        for (int i = 0; i < item.size(); i++) {
+            Item prsntItem = item.get(i);
+            totalTax += prsntItem.calculateSalesTax();
+        }
+
+        return totalTax;
+    }
 }
