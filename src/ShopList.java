@@ -17,7 +17,7 @@ public class ShopList {
 
         for (int i = 0; i < item.size(); i++) {
             Item prsntItem = item.get(i);
-            totalPrice += prsntItem.calculateSalesTax();
+            totalPrice += prsntItem.billMe();
         }
 
         return totalPrice;
